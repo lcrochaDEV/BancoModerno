@@ -1,10 +1,19 @@
-import React, { useState, useContext } from 'react';
+//import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 
-import UserContext from '../ContextApi'
+/import UserContext from '../ContextApi'
 import Button from '../Fomularios/Button';
 
-// @ts-ignore
+
+interface ActivityRowProps {
+  type?: 'in' | 'out'; // Aceita apenas 'in' ou 'out'
+}
+interface IconProps {
+  d: string;        // O caminho do SVG (obrigatório)
+  color?: string;   // Cor (opcional)
+  size?: number;    // Tamanho (opcional)
+}
+
 
 // --- Styled Components ---
 const Container = styled.div`
@@ -93,7 +102,7 @@ const ActivitiesContainer = styled.div`
     animation: var(--animation);
 `;
 
-const ActivityRow = styled.div`
+const ActivityRow = styled.div<ActivityRowProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,8 +125,9 @@ const ActivityRow = styled.div`
   }
 `;
 
+
 // --- Ícones SVG Inline ---
-const Icon = ({ d, color = "currentColor", size = 20 }) => (
+const Icon: React.FC<IconProps> = ({ d, color = "currentColor", size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d={d} />
   </svg>
