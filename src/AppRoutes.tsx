@@ -18,7 +18,7 @@ function App() {
   return (
       <QueryClientProvider client={queryClient}>
         <UserContext.Provider value={{user: 'Lucas Rocha'}}>
-          <BrowserRouter basename="/BancoModerno">
+          <BrowserRouter basename="/">
             <Routes>
               <Route  path={'/'} element={<Login />}/>
               <Route  path={'/'} element={<PethRouter />}>

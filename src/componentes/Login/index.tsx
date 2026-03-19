@@ -51,7 +51,7 @@ const Login: React.FC = () => {
     <FullScreenContainer>
       <section>
         <h2>Login no Banco Moderno</h2>
-        <form action="/home">
+        <form action="/dashboard">
           <Input type="text" id="usuario" placeholder="Usuário" required />
           <Input type="password" id="senha" placeholder="Senha" required />
           <Button type="submit">Entrar</Button>
