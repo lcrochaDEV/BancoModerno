@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import UserContext from '../ContextApi'
 import Button from '../Fomularios/Button';
 
+// @ts-ignore
+
 // --- Styled Components ---
 const Container = styled.div`
   max-width: 1100px;
