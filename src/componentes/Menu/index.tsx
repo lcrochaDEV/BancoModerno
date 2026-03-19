@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
 const _Sidebar = styled.nav`
   width: 260px;
@@ -50,7 +50,7 @@ const _Sidebar = styled.nav`
 `;
 
 
-const NavLink = styled(Link)`
+const NavLink = styled(RouterNavLink)`
   text-decoration: none;
   color: var(--text-secondary, #b3b3b3);
   padding: 12px 15px;
@@ -114,61 +114,40 @@ const SidebarFooter = styled.div`
     display: none;
   }
 `;
+interface MenuItems {
+  path: string;
+  icon: string;
+  label: string;
+}
 
-// --- Componente React Principal ---
-const Menu: React.FC = () => {
-  
+
+
+  // --- Componente React Principal ---
+  const Menu: React.FC = () => {
+  const menuItems: MenuItems[] = [
+    { path: "/dashboard", icon: "dashboard", label: "Dashboard" },
+    { path: "/transferencia", icon: "compare_arrows", label: "Transferências" },
+    { path: "/cartoes", icon: "credit_card", label: "Cartões" },
+    { path: "/investimentos", icon: "finance_mode", label: "Investimentos" },
+    { path: "/seguranca", icon: "security", label: "Segurança" },
+    { path: "/ajuda", icon: "help", label: "Ajuda" },
+    { path: "/", icon: "exit_to_app", label: "Sair" },
+  ];
+    
   return (
     <_Sidebar>
       <Logo><LogoBanco src="https://upload.wikimedia.org/wikipedia/commons/8/82/Banco_Master_logo.png" /></Logo>
       <ul>
-        <li id="menu-dashboard" className="active">
-            <NavLink to="/Dashboard" className="active">
-              <i>
-                <span className="material-symbols-outlined">dashboard</span>
-              </i> 
-              <span>Dashboard</span>
-            </NavLink>
-        </li>
-        <li>
-          <NavLink to="/transferencia">
-            <i>
-              <span className="material-symbols-outlined">compare_arrows</span>
-            </i> 
-            <span>Transferências</span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/cartoes">
-            <i>
-              <span className="material-symbols-outlined">credit_card</span>
-            </i> 
-            <span>Cartões</span>
-          </NavLink>
-        </li>
-        <li><NavLink to="/investimentos">
-          <i>
-            <span className="material-symbols-outlined">finance_mode</span>
-          </i>
-          <span>Investimentos</span></NavLink>
-        </li>
-        <li><NavLink to="/segurança">
-          <i>
-            <span className="material-symbols-outlined">security</span>
-          </i>
-          <span>Segurança</span></NavLink>
-        </li>
-        <li><NavLink to="/ajuda">
-          <i>
-          <span className="material-symbols-outlined">help</span>
-          </i><span>Ajuda</span></NavLink></li>
-        <li>
-        <NavLink to="/sair">
-          <i>
-            <span className="material-symbols-outlined">exit_to_app</span>
-          </i>
-          <span>Sair</span></NavLink>
-        </li>
+           {menuItems.map((item) => (
+          <li id="menu-dashboard">
+              <NavLink to={item.path}>
+                <i>
+                  <span className="material-symbols-outlined">{item.icon}</span>
+                </i> 
+                <span>{item.label}</span>
+              </NavLink>
+          </li>
+        ))}
       </ul>
       <SidebarFooter className="sidebar-footer">
         <div className="links">

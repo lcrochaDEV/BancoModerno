@@ -49,7 +49,7 @@ const SecurityMsg = styled.div`
 const Login: React.FC = () => {
   return (
     <FullScreenContainer>
-      <Section>
+      <section>
         <h2>Login no Banco Moderno</h2>
         <form action="/home">
           <Input type="text" id="usuario" placeholder="Usuário" required />
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
             Seu acesso é protegido por criptografia de ponta.
           </SecurityMsg>
         </form>
-      </Section>
+      </section>
     </FullScreenContainer>
   );
 };

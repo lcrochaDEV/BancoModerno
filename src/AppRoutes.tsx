@@ -8,6 +8,9 @@ import Home from './componentes/Home'
 import Dashboard from './componentes/Dashboard'
 import Transferencia from './componentes/Transferencia'
 import Cartoes from './componentes/Cartoes'
+import Investimentos from './componentes/Investimentos'
+import Seguranca from './componentes/Seguranca'
+import Ajuda from './componentes/Ajuda'
 import './App.css'
 
 
@@ -15,15 +18,17 @@ function App() {
   return (
       <QueryClientProvider client={queryClient}>
         <UserContext.Provider value={{user: 'Lucas Rocha'}}>
-          <BrowserRouter>
+          <BrowserRouter basename="/BancoModerno">
             <Routes>
               <Route  path={'/'} element={<Login />}/>
               <Route  path={'/'} element={<PethRouter />}>
-                <Route  path={'/Home'} element={<Home />}/>
-                <Route  path={'/Dashboard'} element={<Dashboard />}/>
-                <Route  path={'/Transferencia'} element={<Transferencia />}/>
-                <Route  path={'/Cartoes'} element={<Cartoes />}/>
-                <Route  path={'/modem'} element={''}/>
+                <Route  path={'/home'} element={<Home />}/>
+                <Route  path={'/dashboard'} element={<Dashboard />}/>
+                <Route  path={'/transferencia'} element={<Transferencia />}/>
+                <Route  path={'/cartoes'} element={<Cartoes />}/>
+                <Route  path={'/investimentos'} element={<Investimentos />}/>
+                <Route  path={'/seguranca'} element={<Seguranca />}/>
+                <Route  path={'/ajuda'} element={<Ajuda />}/>
               </Route>
             </Routes>
           </BrowserRouter>
