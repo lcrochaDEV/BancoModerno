@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 
-interface Props {
+interface ButtonProps {
+  variant?: 'primary' | 'secondary';
+  isLoading?: boolean; // Para mostrar um spinner ou mudar o texto
+}
 
- }
-
-const Button = styled.button<Props>`
+const Button = styled.button<ButtonProps>`
   width: 100%;
   background: #22d3ee;
   border: none;
@@ -30,3 +31,4 @@ const Button = styled.button<Props>`
 `;
 
 export default Button;
+

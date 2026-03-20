@@ -14,6 +14,9 @@ interface IconProps {
   size?: number;    // Tamanho (opcional)
 }
 
+interface UserContextType {
+  user: string;
+}
 
 // --- Styled Components ---
 const Container = styled.div`
@@ -150,7 +153,7 @@ const _i = styled.div`
 
 // --- Componente Principal ---
 let Dashboard: React.FC = () => {
-  const  { user }: any = useContext(UserContext); //TIPAGEM TYPE ANY
+  const  { user } = useContext(UserContext) as UserContextType; //TIPAGEM TYPE ANY
   const [show, setShow] = useState(true);
 
   return (

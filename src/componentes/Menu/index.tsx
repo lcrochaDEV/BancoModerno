@@ -138,8 +138,8 @@ interface MenuItems {
     <_Sidebar>
       <Logo><LogoBanco src="https://upload.wikimedia.org/wikipedia/commons/8/82/Banco_Master_logo.png" /></Logo>
       <ul>
-           {menuItems.map((item) => (
-          <li id="menu-dashboard">
+           {menuItems.map((item, index) => (
+          <li  key={index} id="menu-dashboard">
               <NavLink to={item.path}>
                 <i>
                   <span className="material-symbols-outlined">{item.icon}</span>

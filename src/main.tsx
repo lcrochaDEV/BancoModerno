@@ -61,6 +61,7 @@ const GlobalStyle = createGlobalStyle`
       to { opacity: 1; transform: translateY(0); }
     }
 `;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GlobalStyle />

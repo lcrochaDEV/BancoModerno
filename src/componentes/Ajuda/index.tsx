@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../Fomularios/Input';
 import Button from '../Fomularios/Button';
@@ -15,14 +15,30 @@ const Section = styled.section`
 `;
 
 const Ajuda: React.FC = () => {
-      
+    const [loading, setLoading] = useState<boolean | undefined>(false);
+    const [ajudaText, setaAudaText] = useState<string | undefined>(''); 
+
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault(); 
+        setLoading(true); // Ativa o "Autenticando..."
+
+        // Simulação de delay da API (onde entraria seu FastAPI)
+        setTimeout(() => {
+        setLoading(false);
+        setaAudaText('')
+        }, 1500);
+    };
     return(
         <Section id="ajuda">
             <h2>Ajuda e Suporte</h2>
             <div className="chatbot card">
                 <p>Nosso Chatbot 24h está disponível para dúvidas rápidas.</p>
-                <Input type="text" placeholder="Digite sua dúvida..." />
-                <Button>Falar com Chatbot</Button>
+                <form onSubmit={handleLogin}>
+                    <Input type="text" onChange={ajudaText => setaAudaText(ajudaText.target.value)} value={ajudaText} placeholder="Digite sua dúvida..." />
+                    <Button type="submit" disabled={loading}>
+                    {loading ? 'Enviando...' : 'Enviar PIX'}
+                    </Button>
+                </form>
             </div>
             <div className="faq">
             <h3>Perguntas Frequentes (FAQ)</h3>

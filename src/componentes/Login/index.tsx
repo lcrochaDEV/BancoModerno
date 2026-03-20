@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import Button from '../Fomularios/Button';
 import Input from '../Fomularios/Input';
@@ -45,16 +46,32 @@ const SecurityMsg = styled.div`
   border-top: 1px solid var(--border-color, #333);
   padding-top: 15px;
 `;
-
 const Login: React.FC = () => {
+const navigate = useNavigate();
+const [loading, setLoading] = React.useState<boolean | undefined>(false);
+const [userText, setUserText] = useState<string | undefined>(''); 
+const [senhaText, setSenhaText] = useState<string | undefined>(''); 
+const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+    setLoading(true); // Ativa o "Autenticando..."
+
+    // Simulação de delay da API (onde entraria seu FastAPI)
+    setTimeout(() => {
+      setLoading(false);
+      navigate('/dashboard');
+    }, 1500);
+  };
   return (
     <FullScreenContainer>
       <section>
         <h2>Login no Banco Moderno</h2>
-        <form action="/BancoModerno/dashboard">
-          <Input type="text" id="usuario" placeholder="Usuário" required />
-          <Input type="password" id="senha" placeholder="Senha" required />
-          <Button type="submit">Entrar</Button>
+        <form onSubmit={handleLogin}>
+          <Input type="text" id="usuario" onChange={userText => setUserText(userText.target.value)} value={userText} placeholder="Usuário" required />
+          <Input type="password" id="senha" onChange={senhaText => setSenhaText(senhaText.target.value)} value={senhaText} placeholder="Senha" required />
+          <Button type="submit" disabled={loading}>
+          {loading ? 'Autenticando...' : 'Entrar'}
+          </Button>
+
           <Links>
             <a href="#">Esqueci minha senha</a>
             <a href="#">Criar Conta</a>
