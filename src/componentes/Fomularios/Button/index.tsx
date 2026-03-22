@@ -22,6 +22,7 @@ const Button = styled.button<ButtonProps>`
   margin-top: 20px;
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
   transition: 0.3s;
+  text-transform: uppercase;
 
   &:hover {
     box-shadow: 0 0 35px rgba(34, 211, 238, 0.6);

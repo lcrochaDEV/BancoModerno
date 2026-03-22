@@ -36,7 +36,7 @@ const Ajuda: React.FC = () => {
                 <form onSubmit={handleLogin}>
                     <Input type="text" onChange={ajudaText => setaAudaText(ajudaText.target.value)} value={ajudaText} placeholder="Digite sua dúvida..." />
                     <Button type="submit" disabled={loading}>
-                    {loading ? 'Enviando...' : 'Enviar PIX'}
+                    {loading ? 'Enviando...' : 'Falar com Chatbot'}
                     </Button>
                 </form>
             </div>

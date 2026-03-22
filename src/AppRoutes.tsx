@@ -1,7 +1,8 @@
 import { QueryClientProvider } from '@tanstack/react-query';
+import queryClient from "./services/queryClient";
 import UserContext from './componentes/ContextApi';
+//import { UserProvider } from './componentes/ContextApi';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { queryClient } from './services/queryClient';
 import PethRouter from './componentes/PethRouter';
 import Login from './componentes/Login'
 import Home from './componentes/Home'
@@ -12,6 +13,7 @@ import Investimentos from './componentes/Investimentos'
 import Seguranca from './componentes/Seguranca'
 import Ajuda from './componentes/Ajuda'
 import './App.css'
+
 
 
 function App() {
